@@ -37,6 +37,12 @@
 			<Add library="kernel32" />
 			<Add library="comctl32" />
 		</Linker>
+		<Unit filename="afisare.cpp" />
+		<Unit filename="afisare.h" />
+		<Unit filename="algoritmi.cpp" />
+		<Unit filename="algoritmi.h" />
+		<Unit filename="definire-globale.h" />
+		<Unit filename="globale.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
