@@ -44,6 +44,8 @@
 		<Unit filename="interfata.cpp" />
 		<Unit filename="interfata.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="miscare.cpp" />
+		<Unit filename="miscare.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
