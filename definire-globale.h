@@ -2,6 +2,8 @@
 #define DEFINIRE-GLOBALE_H_INCLUDED
 
 bool IsFirstMove;//PT A PREVENI SITUATIILE DE GASIT BOMBA DIN PRIMA
+bool GameOver;
+bool Victory;
 //SE INCLUDE DOAR IN main.cpp
 
 bool mat1[100][100];//ce se foloseste pentru joc

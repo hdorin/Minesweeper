@@ -27,9 +27,10 @@ int main(){
 
 
     NoC=12;
-    NoL=12;
+    NoL=10;
     NoBo=20;
     IsFirstMove=true;
+    GameOver=false;
     ///REFOLOSIT
     //CmdWidth=10;
     //CmdHeight=10;
@@ -44,6 +45,13 @@ int main(){
     CreateTable();
     InitMouseControl();
 
+    while(GameOver==false)
+        Sleep(5);
+    if(Victory==false){
+        cout<<"AI PIERDUT!";
+        EvidentiereBombe();
+    }else
+        cout<<"AI CASTIGAT!";
     getch();
 return 0;
 

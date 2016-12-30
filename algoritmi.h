@@ -4,6 +4,8 @@
 void InitBombe(int l,int c); //FOLOSESTE CA PARAMETRU: "NoBo"
 void InitTabela(); //TABELA PE CARE O VEDE JUCATORUL
 void Discover(int x,int y); //
+void DiscoverExtended(int l,int c,int val);
+bool TestSfarsitJoc();
 
 
 #endif // ALGORITMI_H_INCLUDED

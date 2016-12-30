@@ -57,6 +57,10 @@ void Discover(int x,int y){
         InitBombe(x,y);
         IsFirstMove=false;
     }
+    if(mat1[x][y]==1){
+        GameOver=true;
+        return ;
+    }
     for(i=1;i<=NoL;i++)
         for(j=1;j<=NoC;j++)
             mat[i][j]=mat2[i][j];
@@ -70,5 +74,43 @@ void Discover(int x,int y){
                 else
                     DrawBlock_Number(j-1,i-1,mat2[i][j]);
             }
+}
+void DiscoverExtended(int l,int c,int val){
+    int i,j,nr=0,mat[100][100];
+    for(i=1;i<=8;i++)
+        if(mat3[l+DirL[i]][c+DirC[i]]==1)
+            nr++;
+    if(nr==val){
+        for(i=1;i<=NoL;i++)
+            for(j=1;j<=NoC;j++)
+                mat[i][j]=mat2[i][j];
+        cout<<"\nDETECTED-1\n";
+        for(i=1;i<=8;i++)
+            if(mat3[l+DirL[i]][c+DirC[i]]==0&&mat2[l+DirL[i]][c+DirC[i]]==9){
+                if(mat1[l+DirL[i]][c+DirC[i]]==1){
+                    GameOver=true;
+                    return ;
+                }
+                    Discover(l+DirL[i],c+DirC[i]);
+            }
+        for(i=1;i<=NoL;i++)
+            for(j=1;j<=NoC;j++)
+                if(mat[i][j]!=mat2[i][j]){
+                    if(mat[i][j]==0)
+                        DrawBlock_Fill(j-1,j-1,false);
+                    else
+                        DrawBlock_Number(j-1,i-1,mat2[i][j]);
+                }
+    }
+
+}
+bool TestSfarsitJoc(){
+    int i,j;
+    for(i=1;i<=NoL;i++)
+        for(j=1;j<=NoC;j++)
+            if(mat1[i][j]==0&&mat2[i][j]==9)
+                return false;
+    GameOver=true;
+    return true;
 }
 

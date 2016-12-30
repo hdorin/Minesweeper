@@ -2,6 +2,8 @@
 #define GLOBALE_H_INCLUDED
 
 extern bool IsFirstMove;//PT A PREVENI SITUATIILE DE GASIT BOMBA DIN PRIMA
+extern bool GameOver;
+extern bool Victory;
 
 //SE INCLUDE IN FIECARE FISIER CPP
 //PENTRU A PUTEA ACCESARE VARIABILELE (DEFINITE DE definire-globale.h)

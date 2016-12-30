@@ -55,11 +55,13 @@ void DrawBlock_Fill(int l,int c,bool IsUntouched){
     if(IsUntouched==true){
         setcolor(LIGHTGRAY);
         rectangle(l*40,c*40,(l+1)*40,(c+1)*40);
-        setcolor(WHITE);
+        //setcolor(WHITE);
         setbkcolor(WHITE);
 
-
-        setfillstyle(INTERLEAVE_FILL,LIGHTGRAY);
+        if(GameOver==false)
+            setfillstyle(INTERLEAVE_FILL,LIGHTGRAY);
+        else
+            setfillstyle(SOLID_FILL,RED);
         bar(l*40+2,c*40+2,(l+1)*40-2,(c+1)*40-2);
 
         //for(i=1;i<2;i++)
@@ -107,6 +109,13 @@ void DrawBlock_Marked(int l,int c){
             mat3[c+1][l+1]=0;
         }
     }
+}
+void EvidentiereBombe(){
+    int i,j;
+    for(i=1;i<=NoL;i++)
+        for(j=1;j<=NoC;j++)
+            if(mat2[i][j]==9&&mat1[i][j]==1)
+                DrawBlock_Fill(j-1,i-1,true);
 }
 void afisare(){
     int i,j;
