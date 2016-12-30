@@ -2,6 +2,8 @@
 #include<conio.h>
 #include <windows.h>
 #include<graphics.h>
+#include<stdlib.h>
+#include<time.h>
 
 #if       _WIN32_WINNT < 0x0500
   #undef  _WIN32_WINNT
@@ -28,7 +30,9 @@ int main(){
 
     NoC=12;
     NoL=10;
-    NoBo=20;
+    NoBo=15;
+    NoPU=3;
+    NoT=1;
     IsFirstMove=true;
     GameOver=false;
     ///REFOLOSIT

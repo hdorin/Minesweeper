@@ -6,9 +6,10 @@ bool GameOver;
 bool Victory;
 //SE INCLUDE DOAR IN main.cpp
 
-bool mat1[100][100];//ce se foloseste pentru joc
+short mat1[100][100];//ce se foloseste pentru joc
 int NoL,NoC;//NoL - number of  lines   NoC - nunber of columns
 int NoBo;//NoBo - number of bombe
+int NoPU,NoT;//NoPU - number of power-ups   NoT - number of traps
 
 short mat2[100][100];//ce vede jucatorul
 

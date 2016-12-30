@@ -6,6 +6,8 @@ void InitTabela(); //TABELA PE CARE O VEDE JUCATORUL
 void Discover(int x,int y); //
 void DiscoverExtended(int l,int c,int val);
 bool TestSfarsitJoc();
+void InitTraps(int l,int c);
+void InitPoweUps(int l,int c);
 
 
 #endif // ALGORITMI_H_INCLUDED

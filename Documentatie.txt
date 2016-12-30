@@ -1,0 +1,3 @@
+-Bombele apar dupa ce faci prima miscare pentru a preveni situatia
+ in care pierzi din prima
+-Capacanele, powerupurile pot fi ignorate pentru terminarea jocului

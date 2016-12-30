@@ -31,9 +31,7 @@ void CreateTable(){
     int i,j;
 
     initwindow(NoC*40+1,NoL*40+1,"Minesweeper");
-
     setfillstyle(SOLID_FILL, WHITE);
-
     floodfill(1,1,GREEN);
 
     for(i=0;i<NoC;i++)
@@ -96,9 +94,9 @@ void DrawBlock_Number(int l,int c,int Number){
 
 
 }
-void DrawBlock_Marked(int l,int c){
+void DrawBlock_Marked(int l,int c,bool IsMarked){
     if(mat2[c+1][l+1]==9){
-        if(mat3[c+1][l+1]==0){
+        if(IsMarked==false){
             setcolor(RED);
             setfillstyle(SOLID_FILL, LIGHTRED);
             circle(l*40+20,c*40+20,10);
@@ -110,6 +108,21 @@ void DrawBlock_Marked(int l,int c){
         }
     }
 }
+void DrawBlock_RevealMines(int l,int c,bool Undo){
+    if(Undo==true){
+        setcolor(LIGHTGRAY);
+        rectangle(l*40,c*40,(l+1)*40,(c+1)*40);
+        setbkcolor(WHITE);
+        if(GameOver==false)
+            setfillstyle(INTERLEAVE_FILL,LIGHTGRAY);
+        bar(l*40+2,c*40+2,(l+1)*40-2,(c+1)*40-2);
+
+    }else{
+
+        setfillstyle(INTERLEAVE_FILL, LIGHTRED);
+        bar(l*40+2,c*40+2,(l+1)*40-2,(c+1)*40-2);
+    }
+}
 void EvidentiereBombe(){
     int i,j;
     for(i=1;i<=NoL;i++)
@@ -117,15 +130,47 @@ void EvidentiereBombe(){
             if(mat2[i][j]==9&&mat1[i][j]==1)
                 DrawBlock_Fill(j-1,i-1,true);
 }
+void CoverBlocks(int x,int y){
+    int i,j;
+        for(i=x-3;i<=x+3;i++)
+            for(j=y-3;j<=y+3;j++){
+                DrawBlock_Fill(i,j,true);
+                mat2[j+1][i+1]=9;
+                mat3[j+1][i+1]=0;
+            }
+}
+void RevealMinesTemporarely(int x,int y,bool Execute){
+    int i,j;
+    if(Execute==false)
+        return ;
+    DrawBlock_Fill(x,y,false);
+        for(i=x-3;i<=x+3;i++)
+            for(j=y-3;j<=y+3;j++)
+                if(mat1[j+1][i+1]==1){
+                DrawBlock_RevealMines(i,j,false);
+            }
+        delay(500);
+        for(i=x-3;i<=x+3;i++)
+            for(j=y-3;j<=y+3;j++)
+                if(mat1[j+1][i+1]==1){
+                    DrawBlock_RevealMines(i,j,true);
+                    if(mat3[j+1][i+1]==1)
+                        DrawBlock_Marked(i,j,false);
+                }
+}
 void afisare(){
     int i,j;
     for(i=1;i<=NoL;i++){
         for(j=1;j<=NoC;j++)
             cout<<mat1[i][j]<<" ";
-        cout<<"     ";
+        cout<<"    ";
         for(j=1;j<=NoC;j++)
             cout<<mat2[i][j]<<" ";
+        cout<<"    ";
+        for(j=1;j<=NoC;j++)
+            cout<<mat3[i][j]<<" ";
         cout<<endl;
     }
+    cout<<endl;
 
 }
