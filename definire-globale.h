@@ -13,7 +13,7 @@ int NoPU,NoT;//NoPU - number of power-ups   NoT - number of traps
 
 short mat2[100][100];//ce vede jucatorul
 
-bool mat3[100][100];//CASUTE MARCATE CU STEGULETE
+int mat3[100][100];//CASUTE MARCATE CU STEGULETE
 
 //DIMENSIUNILE FERESTREI (CONSOLA)
 int CmdWidth;

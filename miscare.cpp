@@ -23,10 +23,7 @@ void RButton(){
 
             //CAND VREAU SA MARCHEZ CASUTE
             if(LButtonIsPressed==false)
-                if(mat3[y/40+1][x/40+1]==1)
-                    DrawBlock_Marked(x/40,y/40,true);
-                else
-                    DrawBlock_Marked(x/40,y/40,false);
+                    DrawBlock_Marked(x/40,y/40,mat3[y/40+1][x/40+1]);
         }
         if(ismouseclick(WM_RBUTTONUP)){
             getmouseclick(WM_RBUTTONUP, x, y);
@@ -95,7 +92,7 @@ void Mwheel(){
 
 
             //CoverBlocks(x/40,y/40);
-            RevealMinesTemporarely(x/40,y/40,true);
+            RevealTemporarely(x/40,y/40,true);
 
 
 

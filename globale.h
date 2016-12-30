@@ -16,7 +16,7 @@ extern int NoPU,NoT;//NoPU - number of power-ups   NoT - number of traps
 
 extern short mat2[100][100];//ce vede jucatorul
 
-extern bool mat3[100][100];//CASUTE MARCATE CU STEGULETE
+extern int mat3[100][100];//CASUTE MARCATE CU STEGULETE
 
 //DIMENSIUNILE FERESTREI (CONSOLA)
 extern int CmdWidth;

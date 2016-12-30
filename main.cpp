@@ -53,7 +53,7 @@ int main(){
         Sleep(5);
     if(Victory==false){
         cout<<"AI PIERDUT!";
-        EvidentiereBombe();
+        EvidentiereBlockuriLaFinal();
     }else
         cout<<"AI CASTIGAT!";
     getch();

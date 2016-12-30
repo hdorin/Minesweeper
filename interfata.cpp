@@ -70,7 +70,6 @@ void DrawBlock_Fill(int l,int c,bool IsUntouched){
     }
 }
 void DrawBlock_Number(int l,int c,int Number){
-    int i;
     DrawBlock_Fill(l,c,false);
     settextstyle(BOLD_FONT, HORIZ_DIR, 5);
     setbkcolor(WHITE);
@@ -94,24 +93,47 @@ void DrawBlock_Number(int l,int c,int Number){
 
 
 }
-void DrawBlock_Marked(int l,int c,bool IsMarked){
+void DrawBlock_Marked(int l,int c,int MarkedType){
     if(mat2[c+1][l+1]==9){
-        if(IsMarked==false){
+        if(MarkedType==0){
             setcolor(RED);
             setfillstyle(SOLID_FILL, LIGHTRED);
             circle(l*40+20,c*40+20,10);
             floodfill(l*40+21,c*40+21,RED);
             mat3[c+1][l+1]=1;
-        }else{
-            DrawBlock_Fill(l,c,true);
-            mat3[c+1][l+1]=0;
-        }
+        }else
+            if(MarkedType==1){
+                setcolor(CYAN);
+                setfillstyle(SOLID_FILL, LIGHTCYAN);
+                circle(l*40+20,c*40+20,10);
+                floodfill(l*40+21,c*40+21,CYAN);
+                mat3[c+1][l+1]=2;
+            }else
+                if(MarkedType==2){
+                    DrawBlock_Fill(l,c,true);
+                    mat3[c+1][l+1]=0;
+                }
     }
 }
-void DrawBlock_RevealMines(int l,int c,bool Undo){
+void DrawBlock_Reveal_Mines(int l,int c,bool Undo){
     if(Undo==true){
-        setcolor(LIGHTGRAY);
-        rectangle(l*40,c*40,(l+1)*40,(c+1)*40);
+        //setcolor(LIGHTGRAY);
+        //rectangle(l*40,c*40,(l+1)*40,(c+1)*40);
+        setbkcolor(WHITE);
+        if(GameOver==false)
+            setfillstyle(INTERLEAVE_FILL,LIGHTGRAY);
+        bar(l*40+2,c*40+2,(l+1)*40-2,(c+1)*40-2);
+
+    }else{
+        setfillstyle(INTERLEAVE_FILL, LIGHTRED);
+        bar(l*40+2,c*40+2,(l+1)*40-2,(c+1)*40-2);
+    }
+}
+//DESCOPERA TEMPORAR BLOCK-ul CARE DESCOPERA MOMENTAN
+void DrawBlock_Reaveal_RevealBlock(int l,int c,bool Undo){
+    if(Undo==true){
+        //setcolor(LIGHTGRAY);
+        //rectangle(l*40,c*40,(l+1)*40,(c+1)*40);
         setbkcolor(WHITE);
         if(GameOver==false)
             setfillstyle(INTERLEAVE_FILL,LIGHTGRAY);
@@ -119,16 +141,43 @@ void DrawBlock_RevealMines(int l,int c,bool Undo){
 
     }else{
 
-        setfillstyle(INTERLEAVE_FILL, LIGHTRED);
+        setfillstyle(INTERLEAVE_FILL, LIGHTBLUE);
         bar(l*40+2,c*40+2,(l+1)*40-2,(c+1)*40-2);
     }
 }
-void EvidentiereBombe(){
+//DESCOPERA TEMPORAR BLOCK-ul CARE ACOPERA LA LOC
+void DrawBlock_Reaveal_CoverBlock(int l,int c,bool Undo){
+    if(Undo==true){
+        //setcolor(LIGHTGRAY);
+        //rectangle(l*40,c*40,(l+1)*40,(c+1)*40);
+        setbkcolor(WHITE);
+        if(GameOver==false)
+            setfillstyle(INTERLEAVE_FILL,LIGHTGRAY);
+        bar(l*40+2,c*40+2,(l+1)*40-2,(c+1)*40-2);
+
+    }else{
+
+        setfillstyle(INTERLEAVE_FILL, GREEN);
+        bar(l*40+2,c*40+2,(l+1)*40-2,(c+1)*40-2);
+    }
+}
+void EvidentiereBlockuriLaFinal(){
     int i,j;
     for(i=1;i<=NoL;i++)
         for(j=1;j<=NoC;j++)
-            if(mat2[i][j]==9&&mat1[i][j]==1)
-                DrawBlock_Fill(j-1,i-1,true);
+            if(mat2[i][j]==9){
+                if(mat1[i][j]==1)
+                    DrawBlock_Fill(j-1,i-1,true);
+                if(mat1[i][j]==2){
+                    setfillstyle(SOLID_FILL, BLUE);
+                    bar((j-1)*40+2,(i-1)*40+2,((j-1)+1)*40-2,((i-1)+1)*40-2);
+                }
+                if(mat1[i][j]==3){
+                    setfillstyle(SOLID_FILL, GREEN);
+                    bar((j-1)*40+2,(i-1)*40+2,((j-1)+1)*40-2,((i-1)+1)*40-2);
+                }
+            }
+
 }
 void CoverBlocks(int x,int y){
     int i,j;
@@ -139,24 +188,40 @@ void CoverBlocks(int x,int y){
                 mat3[j+1][i+1]=0;
             }
 }
-void RevealMinesTemporarely(int x,int y,bool Execute){
+void RevealTemporarely(int x,int y,bool Execute){
     int i,j;
     if(Execute==false)
         return ;
-    DrawBlock_Fill(x,y,false);
-        for(i=x-3;i<=x+3;i++)
-            for(j=y-3;j<=y+3;j++)
-                if(mat1[j+1][i+1]==1){
-                DrawBlock_RevealMines(i,j,false);
-            }
+    //DrawBlock_Fill(x,y,false);
+    for(i=x-3;i<=x+3;i++)
+        for(j=y-3;j<=y+3;j++)
+            if(mat1[j+1][i+1]==1)
+                DrawBlock_Reveal_Mines(i,j,false);
+            else
+                if(mat1[j+1][i+1]==2)
+                    DrawBlock_Reaveal_RevealBlock(i,j,false);
+                else
+                    if(mat1[j+1][i+1]==3)
+                        DrawBlock_Reaveal_CoverBlock(i,j,false);
         delay(500);
         for(i=x-3;i<=x+3;i++)
             for(j=y-3;j<=y+3;j++)
                 if(mat1[j+1][i+1]==1){
-                    DrawBlock_RevealMines(i,j,true);
-                    if(mat3[j+1][i+1]==1)
-                        DrawBlock_Marked(i,j,false);
-                }
+                    DrawBlock_Reveal_Mines(i,j,true);
+                    if(mat3[j+1][i+1]>0)
+                        DrawBlock_Marked(i,j,mat3[j+1][i+1]-1);
+                }else
+                    if(mat1[j+1][i+1]==2){
+                        DrawBlock_Reaveal_RevealBlock(i,j,true);
+                        if(mat3[j+1][i+1]>0)
+                            DrawBlock_Marked(i,j,mat3[j+1][i+1]-1);
+                    }else
+                        if(mat1[j+1][i+1]==3){
+                            DrawBlock_Reaveal_CoverBlock(i,j,true);
+                            if(mat3[j+1][i+1]>0)
+                                DrawBlock_Marked(i,j,mat3[j+1][i+1]-1);
+                        }
+
 }
 void afisare(){
     int i,j;

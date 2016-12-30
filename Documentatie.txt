@@ -1,3 +1,18 @@
 -Bombele apar dupa ce faci prima miscare pentru a preveni situatia
  in care pierzi din prima
 -Capacanele, powerupurile pot fi ignorate pentru terminarea jocului
+
+COMBO CLICK DREAPTA+STANGA:
+1. SE PUNE CURSORUL PE O CIFRA
+2. DACA NUMARUL DE STAGURI ROSI DIN ZONA CORESPUNDE CU CIFRA, ATUNCI
+   SE REALIZEAZA
+
+-Bulina rosie -> marcheaza o bomba (SUNT NECESARE PENTRU FOLOSIREA
+                 COMBOULUI CLICK DREAPTA+STANGA)
+-Bulina albastra -> previne activarea unei casute speciale
+
+Block temporara rosu - se afla o bomba acolo
+Block temporar albastru - se afla un bloc special de descoperire temporara
+Block temporar verde - se afla un bloc special de reascudnere/reumplere
+
+BLOCKURILE SPECIALE: actioneaza pe un patrat de latura de 7

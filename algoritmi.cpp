@@ -23,7 +23,7 @@ void InitBombe(int l,int c){
         //srand(time(NULL));
         x=rand()%NoL+1;
         y=rand()%NoC+1;
-        if(mat1[x][y]==0&&l!=x||c!=y){
+        if(mat1[x][y]==0&&(l!=x||c!=y)){
             mat1[x][y]=1;
             NoBo--;
         }
@@ -35,10 +35,9 @@ void InitPoweUps(int l,int c){
     //srand(time(NULL));
 
     while(NoPU>0){
-            cout<<"\nINUT POWER-UPS\n";
         x=rand()%NoL+1;
         y=rand()%NoC+1;
-        if(mat1[x][y]==0&&l!=x||c!=y){
+        if(mat1[x][y]==0&&(l!=x||c!=y)){
             mat1[x][y]=2;
             NoPU--;
         }
@@ -51,7 +50,7 @@ void InitTraps(int l,int c){
     while(NoT>0){
         x=rand()%NoL+1;
         y=rand()%NoC+1;
-        if(mat1[x][y]==0&&l!=x||c!=y){
+        if(mat1[x][y]==0&&(l!=x||c!=y)){
             mat1[x][y]=3;
             NoT--;
         }
@@ -76,7 +75,6 @@ void Discover_Fill(int x,int y){
             if(mat1[x+DirL[i]][y+DirC[i]]==1)
                 nr++;
         mat2[x][y]=nr;
-        cout<<"\nIN FILL\n";
         if(nr==0){
             for(i=1;i<=8;i++)
                 Discover_Fill(x+DirL[i],y+DirC[i]);
@@ -86,6 +84,7 @@ void Discover_Fill(int x,int y){
 void Discover(int x,int y){
     int mat[100][100];
     int i,j;
+    bool Execute;
     if(IsFirstMove==true){
         InitBombe(x,y);
 
@@ -100,9 +99,11 @@ void Discover(int x,int y){
     case 3: CoverBlocks(y-1,x-1); mat1[x][y]=0; return;//mat1[x][y]=0;
     }
    // if(mat1[x][y]==2){
-    thread t1 (RevealMinesTemporarely,y-1,x-1,mat1[x][y]==2);
+    Execute=(mat1[x][y]==2);
     if(mat1[x][y]==2)
         mat1[x][y]=0;
+    thread t1 (RevealTemporarely,y-1,x-1,Execute);
+
 
 
    // }
@@ -130,7 +131,7 @@ void DiscoverExtended(int l,int c,int val){
     for(i=1;i<=8;i++)
         if(mat3[l+DirL[i]][c+DirC[i]]==1)
             nr++;
-    if(nr==val){
+    if(nr==val&&val>0){
         for(i=1;i<=NoL;i++)
             for(j=1;j<=NoC;j++)
                 mat[i][j]=mat2[i][j];
@@ -141,7 +142,6 @@ void DiscoverExtended(int l,int c,int val){
                     GameOver=true;
                     cout<<"\nGATA JOCU'"<<l+DirL[i]<<"-"<<c+DirC[i]<<"="<<mat3[l+DirL[i]][c+DirC[i]];
                     cout<<endl;
-                    delay(10);
                     afisare();
                     return ;
 
@@ -155,7 +155,6 @@ void DiscoverExtended(int l,int c,int val){
                         EndAfter=false;
                         return ;
                     }
-
             }
         for(i=1;i<=NoL;i++)
             for(j=1;j<=NoC;j++)
