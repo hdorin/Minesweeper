@@ -19,13 +19,8 @@ short mat2[100][100];//ce vede jucatorul
 int mat3[100][100];//CASUTE MARCATE CU STEGULETE
 
 
-//DIMENSIUNILE FERESTREI (CONSOLA)
-int CmdWidth;
-int CmdHeight;
-
 bool RButtonIsPressed;
 bool LButtonIsPressed;
-
 
 
 #endif // DEFINIRE-GLOBALE_H_INCLUDED

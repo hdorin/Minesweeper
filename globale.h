@@ -21,24 +21,18 @@ extern short mat2[100][100];//ce vede jucatorul
 extern int mat3[100][100];//CASUTE MARCATE CU STEGULETE
 
 
-//DIMENSIUNILE FERESTREI (CONSOLA)
-extern int CmdWidth;
-extern int CmdHeight;
-
 
 extern bool RButtonIsPressed;
 extern bool LButtonIsPressed;
 
 
 struct dmost{
-    const int addx=252,addy=105;
-    const int addbx=30,addby=30;//add between options
-    const int sx=35,sy=165;//overall add
+    const int addx=252,addy=105;//dimenasiunea casutelor
+    const int addbx=30,addby=30;//spatiu dintre casute
+    const int sx=35,sy=165;//de unde incepe prima casuta
     const int addx2=124,addy2=60;
-    const int colr=LIGHTGRAY;
-};
-//Display Menu Options*/
-
+    //const int colr=LIGHTGRAY;//culoare casute
+};//Display Menu Options
 
 
 #endif // GLOBALE_H_INCLUDED

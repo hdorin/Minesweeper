@@ -1,16 +1,8 @@
 #include<iostream>
 #include<conio.h>
-#include <windows.h>
-#include<graphics.h>
+//#include<graphics.h>
 #include<stdlib.h>
 #include<time.h>
-
-#if       _WIN32_WINNT < 0x0500
-  #undef  _WIN32_WINNT
-  #define _WIN32_WINNT   0x0500
-#endif
-
-
 
 
 
@@ -22,8 +14,15 @@
 
 using namespace std;
 
-int main(){
+#if       _WIN32_WINNT < 0x0500
+  #undef  _WIN32_WINNT
+  #define _WIN32_WINNT   0x0500
+#endif
+#include<windows.h>
 
+
+int main(){
+    ShowWindow( GetConsoleWindow(), SW_HIDE );
     while(true){
         //Menu=true;
         NoC=15;
@@ -33,42 +32,35 @@ int main(){
         WaitOneMore=false;
         LButtonIsPressed=RButtonIsPressed=false;
 
-        initwindow(NoC*40+1,NoL*40+1,"Minesweeper");
-        //InitTabela();
+        CreateGraphicsWindow();
 
         DisplayMenu_Title();
         DisplayMenu_Options();
         InitMenuControl();
 
         Menu=false;
-        closegraph();
+        DestroyGraphicsWindow();
 
         DifficultySelected();
+        //NoBo=1;///STERGE
 
-        initwindow(NoC*40+1,NoL*40+1,"Minesweeper");
+        CreateGraphicsWindow();
         InitTabela();
-        afisare();
-        InitConsole();
 
-        delay(500);
+        Sleep(200);
         DisplayTable();
         InitMouseControl();
 
         while(GameOver==false)
             Sleep(5);
-        if(Victory==false){
-            cout<<"AI PIERDUT!";
+        if(Victory==false)
             EvidentiereBlockuriLaFinal();
-        }else
-            cout<<"AI CASTIGAT!";
+        else
+            DisplayVictoryMessage();
         while(LButtonIsPressed==false||RButtonIsPressed==false)
             Sleep(5);
         Menu=true;
-        delay(10);
-        closegraph();
-        //delay(1000);
-
+        Sleep(10);
+        DestroyGraphicsWindow();
     }
-
-
 return 0;}

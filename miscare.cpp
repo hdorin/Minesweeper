@@ -34,7 +34,6 @@ void RButton(){
             //MISCAREA CU CLICK DREAPTA + STANGA
             if(LButtonIsPressed==true)
                 if(mat2[y/40+1][x/40+1]>0&&mat2[y/40+1][x/40+1]<9){
-                    cout<<"\nCOMBO DETECTED\n";
                     DiscoverExtended(y/40+1,x/40+1,mat2[y/40+1][x/40+1]);
 
                     Victory=TestSfarsitJoc();
@@ -74,27 +73,20 @@ void LButton(){
             //MISCAREA CU CLICK DREAPTA + STANGA
                 if(RButtonIsPressed==true){
                     if(mat2[y/40+1][x/40+1]>0&&mat2[y/40+1][x/40+1]<9){
-                        cout<<"\nDETECTED-123\n";
                         DiscoverExtended(y/40+1,x/40+1,mat2[y/40+1][x/40+1]);
-
 
                         Victory=TestSfarsitJoc();
                     }
-                }else{
-                    cout<<"\nNU TREBUIE-123\n";
-                    //CAND VREAU SA APAS CASUTE
+                }else//CAND VREAU SA APAS CASUTE
                     if(mat3[y/40+1][x/40+1]==0){
-                    Discover(y/40+1,x/40+1);
-                    Victory=TestSfarsitJoc();
-                }
-                afisare();
-                }
+                        Discover(y/40+1,x/40+1);
+                        Victory=TestSfarsitJoc();
+                    }
         }
 
     }
 }
 void InitMouseControl(){
-
     thread (RButton).detach();
     thread (LButton).detach();
 }
@@ -103,38 +95,30 @@ void MenuSelect(){
     int x,y;
     dmost dmo;
     while(Menu==true){
-            delay(1);
+        delay(1);
         if(ismouseclick(WM_LBUTTONUP)){
             getmouseclick(WM_LBUTTONUP, x,y);
-                    cout<<"\nSELECTED ITEM FROM MENU\n";
-                    //CAND VREAU SA APAS CASUTE
-
                     if(x>=dmo.sx&&y>=dmo.sy)
                         if(x<=dmo.sx+dmo.addx&&y<=dmo.sy+dmo.addy){
                             Difficulty=1;
                             Menu=false;
-                            cout<<"\nSELECTAT EASY\n";
                         }
                     if(x>=dmo.sx&&y>=dmo.sy+dmo.addy+dmo.addby)
                         if(x<=dmo.sx+dmo.addx&&y<=dmo.sy+dmo.addy+dmo.addy+dmo.addby){
                             Difficulty=2;
                             Menu=false;
-                            cout<<"\nSELECTAT MEDIUM\n";
                         }
                     if(x>=dmo.sx+dmo.addx+dmo.addbx&&y>=dmo.sy)
                         if(x<=dmo.sx+dmo.addx+dmo.addx+dmo.addbx&&y<=dmo.sy+dmo.addy){
                             Difficulty=3;
                             Menu=false;
-                            cout<<"\nSELECTAT HARD\n";
                         }
                     if(x>=dmo.sx+dmo.addx+dmo.addbx&&y>=dmo.sy+dmo.addy+dmo.addby)
                         if(x<=dmo.sx+dmo.addx+dmo.addx+dmo.addbx&&y<=dmo.sy+dmo.addy+dmo.addy+dmo.addby){
                             Difficulty=4;
                             Menu=false;
-                            cout<<"\nSELECTAT EXPERT\n";
                         }
                 }
-
         if(ismouseclick(WM_RBUTTONUP))
             getmouseclick(WM_RBUTTONUP, x,y);
     }
@@ -144,4 +128,3 @@ void InitMenuControl(){
     thread t1 (MenuSelect);
     t1.join();
 }
-

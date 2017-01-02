@@ -4,7 +4,6 @@
 #include<thread>
 #include<graphics.h>
 
-//#include"algoritmi.h"
 #include"globale.h"
 #include"interfata.h"
 
@@ -17,34 +16,33 @@ void DifficultySelected(){
     srand(time(NULL));
     switch(Difficulty){
         case 1:
-            NoC=12;
             NoL=10;
+            NoC=12;
             NoBo=15;
             NoPU=rand()%3+1;
             NoT=rand()%2;
             break;
         case 2:
-            NoC=15;
-            NoL=15;
+            NoL=14;
+            NoC=16;
             NoBo=30;
             NoPU=rand()%5+1;
             NoT=rand()%3+1;
             break;
         case 3:
-            NoC=20;
-            NoL=15;
+            NoL=14;
+            NoC=24;
             NoBo=50;
             NoPU=rand()%7+1;
             NoT=rand()%5+1;
             break;
         case 4:
-            NoC=30;
             NoL=20;
-            NoBo=99;
+            NoC=30;
+            NoBo=80;
             NoPU=rand()%9+1;
             NoT=rand()%9+1;
             break;
-
     }
 }
 void InitBombe(int l,int c){
@@ -67,7 +65,6 @@ void InitBombe(int l,int c){
 void InitPoweUps(int l,int c){
     int x,y;
     //srand(time(NULL));
-
     while(NoPU>0){
         x=rand()%NoL+1;
         y=rand()%NoC+1;
@@ -76,7 +73,6 @@ void InitPoweUps(int l,int c){
             NoPU--;
         }
     }
-
 }
 void InitTraps(int l,int c){
     int x,y;
@@ -89,10 +85,13 @@ void InitTraps(int l,int c){
             NoT--;
         }
     }
-
 }
 void InitTabela(){
     int i,j;
+    for(i=0;i<=NoL+1;i++)
+        for(j=0;j<=NoC+1;j++)
+            mat1[i][j]=mat2[i][j]=mat3[i][j]=0;
+
     for(i=1;i<=NoL;i++)
         for(j=1;j<=NoC;j++)
             mat2[i][j]=9;
@@ -100,7 +99,6 @@ void InitTabela(){
         for(j=1;j<=NoC;j++)
             mat3[i][j]=0;
 }
-
 void Discover_Fill(int x,int y){
     int i,nr=0;
     if(mat2[x][y]==9&&mat1[x][y]==0&&mat3[x][y]==0){
@@ -121,25 +119,18 @@ void Discover(int x,int y){
     if(IsFirstMove==true){
         InitBombe(x,y);
         InitTraps(x,y);
-        afisare();
         InitPoweUps(x,y);
         IsFirstMove=false;
     }
     switch(mat1[x][y]){
-    case 1: GameOver=true; return ;
-    case 2:    break;
-    case 3: CoverBlocks(y-1,x-1); mat1[x][y]=0; return;//mat1[x][y]=0;
+        case 1: GameOver=true; return ;
+        case 2:    break;
+        case 3: CoverBlocks(y-1,x-1); mat1[x][y]=0; return;//mat1[x][y]=0;
     }
-   // if(mat1[x][y]==2){
     Execute=(mat1[x][y]==2);
     if(mat1[x][y]==2)
         mat1[x][y]=0;
     thread t1 (RevealTemporarely,y-1,x-1,Execute);
-
-
-
-   // }
-    cout<<"\nAM CONTINUAT\n";
 
     for(i=1;i<=NoL;i++)
         for(j=1;j<=NoC;j++)
@@ -167,20 +158,15 @@ void DiscoverExtended(int l,int c,int val){
         for(i=1;i<=NoL;i++)
             for(j=1;j<=NoC;j++)
                 mat[i][j]=mat2[i][j];
-        cout<<"\nDETECTED-1\n";
         for(i=1;i<=8;i++)
             if(mat3[l+DirL[i]][c+DirC[i]]==0&&mat2[l+DirL[i]][c+DirC[i]]==9){
                 if(mat1[l+DirL[i]][c+DirC[i]]==1){
                     GameOver=true;
-                    cout<<"\nGATA JOCU'"<<l+DirL[i]<<"-"<<c+DirC[i]<<"="<<mat3[l+DirL[i]][c+DirC[i]];
-                    cout<<endl;
-                    afisare();
                     return ;
 
                 }
                     if(mat1[l+DirL[i]][c+DirC[i]]==3)
                         EndAfter=true;
-
                     Discover(l+DirL[i],c+DirC[i]);
 
                     if(EndAfter==true){
@@ -207,4 +193,3 @@ bool TestSfarsitJoc(){
     GameOver=true;
     return true;
 }
-
