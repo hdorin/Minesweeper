@@ -25,9 +25,9 @@
 	<iostream>
 	"globale.h"
 
-1483133940 c:\users\dorin\onedrive\protected\minesweeper\globale.h
+1483362976 c:\users\dorin\onedrive\protected\minesweeper\globale.h
 
-1483137479 source:c:\users\dorin\onedrive\protected\minesweeper\algoritmi.cpp
+1483361926 source:c:\users\dorin\onedrive\protected\minesweeper\algoritmi.cpp
 	<iostream>
 	<stdlib.h>
 	<time.h>
@@ -36,7 +36,7 @@
 	"globale.h"
 	"interfata.h"
 
-1483137668 source:c:\users\dorin\onedrive\protected\minesweeper\main.cpp
+1483362899 source:c:\users\dorin\onedrive\protected\minesweeper\main.cpp
 	<iostream>
 	<conio.h>
 	<windows.h>
@@ -49,22 +49,22 @@
 	"interfata.h"
 	"miscare.h"
 
-1483133940 c:\users\dorin\onedrive\protected\minesweeper\definire-globale.h
+1483362886 c:\users\dorin\onedrive\protected\minesweeper\definire-globale.h
 
-1483120881 c:\users\dorin\onedrive\protected\minesweeper\algoritmi.h
+1483359015 c:\users\dorin\onedrive\protected\minesweeper\algoritmi.h
 
 1482846204 c:\users\dorin\onedrive\protected\minesweeper\afisare.h
 
-1483137668 c:\users\dorin\onedrive\protected\minesweeper\interfata.h
+1483193206 c:\users\dorin\onedrive\protected\minesweeper\interfata.h
 
-1483137958 source:c:\users\dorin\onedrive\protected\minesweeper\interfata.cpp
+1483361845 source:c:\users\dorin\onedrive\protected\minesweeper\interfata.cpp
 	<iostream>
 	<windows.h>
 	<graphics.h>
 	"globale.h"
 	"interfata.h"
 
-1483135007 source:c:\users\dorin\onedrive\protected\minesweeper\miscare.cpp
+1483362500 source:c:\users\dorin\onedrive\protected\minesweeper\miscare.cpp
 	<iostream>
 	<thread>
 	<graphics.h>
@@ -73,5 +73,5 @@
 	"miscare.h"
 	"algoritmi.h"
 
-1483014554 c:\users\dorin\onedrive\protected\minesweeper\miscare.h
+1483193103 c:\users\dorin\onedrive\protected\minesweeper\miscare.h
 

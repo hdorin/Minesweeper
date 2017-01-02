@@ -13,6 +13,40 @@ using namespace std;
 short DirL[10] = {0,-1,-1, 0, 1, 1, 1, 0,-1};
 short DirC[10] = {0, 0, 1, 1, 1, 0,-1,-1,-1};
 
+void DifficultySelected(){
+    srand(time(NULL));
+    switch(Difficulty){
+        case 1:
+            NoC=12;
+            NoL=10;
+            NoBo=15;
+            NoPU=rand()%3+1;
+            NoT=rand()%2;
+            break;
+        case 2:
+            NoC=15;
+            NoL=15;
+            NoBo=30;
+            NoPU=rand()%5+1;
+            NoT=rand()%3+1;
+            break;
+        case 3:
+            NoC=20;
+            NoL=15;
+            NoBo=50;
+            NoPU=rand()%7+1;
+            NoT=rand()%5+1;
+            break;
+        case 4:
+            NoC=30;
+            NoL=20;
+            NoBo=99;
+            NoPU=rand()%9+1;
+            NoT=rand()%9+1;
+            break;
+
+    }
+}
 void InitBombe(int l,int c){
     int x,y;
     srand(time(NULL));
@@ -57,7 +91,6 @@ void InitTraps(int l,int c){
     }
 
 }
-
 void InitTabela(){
     int i,j;
     for(i=1;i<=NoL;i++)
@@ -87,7 +120,6 @@ void Discover(int x,int y){
     bool Execute;
     if(IsFirstMove==true){
         InitBombe(x,y);
-
         InitTraps(x,y);
         afisare();
         InitPoweUps(x,y);
@@ -165,7 +197,6 @@ void DiscoverExtended(int l,int c,int val){
                         DrawBlock_Number(j-1,i-1,mat2[i][j]);
                 }
     }
-
 }
 bool TestSfarsitJoc(){
     int i,j;

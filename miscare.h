@@ -3,5 +3,6 @@
 
 //int tasta();
 void InitMouseControl();
+void InitMenuControl();
 
 #endif // MISCARE_H_INCLUDED

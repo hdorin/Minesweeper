@@ -27,10 +27,10 @@ void InitConsole(){
     SetConsoleWindowInfo(Handle, TRUE, &Rect);
 }
 //outtextxy(4, aux+2, "5");
-void CreateTable(){
+void DisplayTable(){
     int i,j;
 
-    initwindow(NoC*40+1,NoL*40+1,"Minesweeper");
+
     setfillstyle(SOLID_FILL, WHITE);
     floodfill(1,1,GREEN);
 
@@ -47,8 +47,105 @@ void CreateTable(){
 
 
 }
+void DisplayMenu_Title(){
+    int addx2=146,addy2=60;
+    setbkcolor(WHITE);
+    setfillstyle(SOLID_FILL, WHITE);
+    floodfill(1,1,GREEN);
+    setcolor(GREEN);
+    settextstyle(BOLD_FONT,   HORIZ_DIR, 4);
+    outtextxy(100,28,"The Adventures of the");
+
+    setcolor(RED);
+    settextstyle(EUROPEAN_FONT,   HORIZ_DIR, 5);
+    outtextxy(addx2,addy2,"M");
+
+    setcolor(BLUE);
+    settextstyle(BOLD_FONT, HORIZ_DIR, 5);
+    outtextxy(addx2+55,addy2+3,"inesweeper");
+
+
+    //setcolor(RED);
+    //settextstyle(BOLD_FONT, HORIZ_DIR, 5);
+    //outtextxy(267,10,"er");
+}
+
+void DisplayMenu_Options(){
+    dmost dmo;
+    setbkcolor(dmo.colr);
+    //void setlinestyle(int linestyle, unsigned upattern, int thickness);
+    //setlinestyle(SOLID_LINE,SOLID_LINE,3);
+
+    //EASY
+    setfillstyle(SOLID_FILL,dmo.colr);
+    bar(dmo.sx,dmo.sy,dmo.sx+dmo.addx,dmo.sy+dmo.addy);
+
+    setcolor(WHITE);
+    settextstyle(BOLD_FONT,   HORIZ_DIR, 4);
+    outtextxy(dmo.sx+10,dmo.sy+5,"Easy 10x12");
+
+
+
+    setcolor(WHITE);
+    settextstyle(BOLD_FONT,   HORIZ_DIR, 3);
+    outtextxy(dmo.sx+10,dmo.sy+35,"Bombs: 15");
+    outtextxy(dmo.sx+10,dmo.sy+55,"Traps: 0-1");
+    outtextxy(dmo.sx+10,dmo.sy+75,"Reveals: 1-3");
+
+    //MEDIUM
+    bar(dmo.sx,dmo.sy+dmo.addy+dmo.addby,dmo.sx+dmo.addx,dmo.sy+dmo.addy+dmo.addy+dmo.addby);
+
+    setcolor(WHITE);
+    settextstyle(BOLD_FONT,   HORIZ_DIR, 4);
+    outtextxy(dmo.sx+10,dmo.sy+5+dmo.addy+dmo.addby,"Medium 15x15");
+
+
+
+    setcolor(WHITE);
+    settextstyle(BOLD_FONT,   HORIZ_DIR, 3);
+    outtextxy(dmo.sx+10,dmo.sy+35+dmo.addy+dmo.addby,"Bombs: 30");
+    outtextxy(dmo.sx+10,dmo.sy+55+dmo.addy+dmo.addby,"Traps: 1-3");
+    outtextxy(dmo.sx+10,dmo.sy+75+dmo.addy+dmo.addby,"Reveals: 1-5");
+
+    //HARD
+    bar(dmo.sx+dmo.addx+dmo.addbx,dmo.sy,dmo.sx+dmo.addx+dmo.addx+dmo.addbx,dmo.sy+dmo.addy);
+
+    setcolor(WHITE);
+    settextstyle(BOLD_FONT,   HORIZ_DIR, 4);
+    outtextxy(dmo.sx+10+dmo.addx+dmo.addbx,dmo.sy+5,"Hard 15x20");
+
+
+
+    setcolor(WHITE);
+    settextstyle(BOLD_FONT,   HORIZ_DIR, 3);
+    outtextxy(dmo.sx+10+dmo.addx+dmo.addbx,dmo.sy+35,"Bombs: 50");
+    outtextxy(dmo.sx+10+dmo.addx+dmo.addbx,dmo.sy+55,"Traps: 1-9");
+    outtextxy(dmo.sx+10+dmo.addx+dmo.addbx,dmo.sy+75,"Reveals: 1-9");
+
+
+
+
+    //EXPERT
+    bar(dmo.sx+dmo.addx+dmo.addbx,dmo.sy+dmo.addy+dmo.addby,dmo.sx+dmo.addx+dmo.addx+dmo.addbx,dmo.sy+dmo.addy+dmo.addy+dmo.addby);
+
+    setcolor(WHITE);
+    settextstyle(BOLD_FONT,   HORIZ_DIR, 4);
+    outtextxy(dmo.sx+10+dmo.addx+dmo.addbx,dmo.sy+5+dmo.addy+dmo.addby,"Expert 20x30");
+
+
+
+    setcolor(WHITE);
+    settextstyle(BOLD_FONT,   HORIZ_DIR, 3);
+    outtextxy(dmo.sx+10+dmo.addx+dmo.addbx,dmo.sy+35+dmo.addy+dmo.addby,"Bombs: 99");
+    outtextxy(dmo.sx+10+dmo.addx+dmo.addbx,dmo.sy+55+dmo.addy+dmo.addby,"Traps: 1-9");
+    outtextxy(dmo.sx+10+dmo.addx+dmo.addbx,dmo.sy+75+dmo.addy+dmo.addby,"Reveals: 1-9");
+
+
+
+
+}
+
 void DrawBlock_Fill(int l,int c,bool IsUntouched){
-    int i;
 
     if(IsUntouched==true){
         setcolor(LIGHTGRAY);
@@ -224,7 +321,7 @@ void RevealTemporarely(int x,int y,bool Execute){
 
 }
 void afisare(){
-    int i,j;
+    /*int i,j;
     for(i=1;i<=NoL;i++){
         for(j=1;j<=NoC;j++)
             cout<<mat1[i][j]<<" ";
@@ -236,6 +333,6 @@ void afisare(){
             cout<<mat3[i][j]<<" ";
         cout<<endl;
     }
-    cout<<endl;
+    cout<<endl;*/
 
 }

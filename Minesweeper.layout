@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="12" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="946" topLine="36" />
-		</Cursor>
-	</File>
 	<File name="miscare.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="12" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2576" topLine="75" />
+			<Cursor1 position="3782" topLine="120" />
 		</Cursor>
 	</File>
 	<File name="interfata.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="12" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="304" topLine="0" />
+			<Cursor1 position="133" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="algoritmi.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="12" zoom_2="0">
+	<File name="algoritmi.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="12" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3452" topLine="85" />
-		</Cursor>
-	</File>
-	<File name="miscare.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="12" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="132" topLine="0" />
+			<Cursor1 position="2084" topLine="85" />
 		</Cursor>
 	</File>
 	<File name="algoritmi.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="12" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="252" topLine="0" />
+			<Cursor1 position="62" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="miscare.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="12" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="123" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="globale.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="12" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="601" topLine="11" />
+			<Cursor1 position="877" topLine="21" />
 		</Cursor>
 	</File>
-	<File name="interfata.cpp" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="12" zoom_2="0">
+	<File name="interfata.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="10" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="5134" topLine="164" />
+			<Cursor1 position="3245" topLine="124" />
 		</Cursor>
 	</File>
 	<File name="definire-globale.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="12" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="475" topLine="0" />
+			<Cursor1 position="428" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="12" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="642" topLine="80" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

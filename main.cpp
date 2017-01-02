@@ -13,6 +13,7 @@
 
 
 
+
 #include"globale.h"
 #include"definire-globale.h"
 #include"algoritmi.h"
@@ -21,64 +22,53 @@
 
 using namespace std;
 
-
-
 int main(){
-    ///REFOLOSIT
-    //ShowWindow( GetConsoleWindow(), SW_HIDE );
 
+    while(true){
+        //Menu=true;
+        NoC=15;
+        NoL=11;
+        IsFirstMove=true;
+        GameOver=false;
+        WaitOneMore=false;
+        LButtonIsPressed=RButtonIsPressed=false;
 
-    NoC=12;
-    NoL=10;
-    NoBo=15;
-    NoPU=3;
-    NoT=1;
-    IsFirstMove=true;
-    GameOver=false;
-    ///REFOLOSIT
-    //CmdWidth=10;
-    //CmdHeight=10;
+        initwindow(NoC*40+1,NoL*40+1,"Minesweeper");
+        //InitTabela();
 
-    //Init bombe dupa ce jucatorul face prima miscare
-    InitTabela();
-    afisare();
+        DisplayMenu_Title();
+        DisplayMenu_Options();
+        InitMenuControl();
 
-    InitConsole();
+        Menu=false;
+        closegraph();
 
-    delay(500);
-    CreateTable();
-    InitMouseControl();
+        DifficultySelected();
 
-    while(GameOver==false)
-        Sleep(5);
-    if(Victory==false){
-        cout<<"AI PIERDUT!";
-        EvidentiereBlockuriLaFinal();
-    }else
-        cout<<"AI CASTIGAT!";
-    getch();
-return 0;
+        initwindow(NoC*40+1,NoL*40+1,"Minesweeper");
+        InitTabela();
+        afisare();
+        InitConsole();
 
+        delay(500);
+        DisplayTable();
+        InitMouseControl();
 
+        while(GameOver==false)
+            Sleep(5);
+        if(Victory==false){
+            cout<<"AI PIERDUT!";
+            EvidentiereBlockuriLaFinal();
+        }else
+            cout<<"AI CASTIGAT!";
+        while(LButtonIsPressed==false||RButtonIsPressed==false)
+            Sleep(5);
+        Menu=true;
+        delay(10);
+        closegraph();
+        //delay(1000);
 
-/*
+    }
 
-//DIMENSIUNILE FERESTREI (CONSOLA)
-
-
-
-
-
-
-InitBombe();//Init bombe dupa ce jucatorul face prima miscare
-InitTabela();
-afisare();
-int l,c;
-cout<<endl<<"l c=";
-cin>>l>>c;
-Discover(l,c);
-cout<<endl;
-afisare();
-*/
 
 return 0;}
