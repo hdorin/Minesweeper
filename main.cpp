@@ -1,9 +1,8 @@
 #include<iostream>
 #include<conio.h>
-//#include<graphics.h>
+//#include<graphics.h> // CONFLICT CU windows.h
 #include<stdlib.h>
 #include<time.h>
-
 
 
 #include"globale.h"
