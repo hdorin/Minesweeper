@@ -2,6 +2,9 @@
 #define DEFINIRE_GLOBALE_H_INCLUDED
 //SE INCLUDE DOAR IN main.cpp
 
+bool CanChangeClr,CanClear;//BUG SOLVED: Bloc reveal nu afisa cum trebuie
+                           //ACESTEA ASIGURA SINCRONIZAREA THREAD-URILOR
+
 bool IsFirstMove;//PT A PREVENI SITUATIILE DE GASIT BOMBA DIN PRIMA
 bool GameOver;
 bool Victory;

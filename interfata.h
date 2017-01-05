@@ -1,6 +1,7 @@
 #ifndef INTERFATA_H_INCLUDED
 #define INTERFATA_H_INCLUDED
 
+void afisare();
 void DisplayMenu_Title();
 void DisplayMenu_Options();
 void DisplayTable();

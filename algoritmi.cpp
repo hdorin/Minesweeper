@@ -130,12 +130,17 @@ void Discover(int x,int y){
     Execute=(mat1[x][y]==2);
     if(mat1[x][y]==2)
         mat1[x][y]=0;
+
+    CanChangeClr=CanClear=false;
     thread t1 (RevealTemporarely,y-1,x-1,Execute);
 
     for(i=1;i<=NoL;i++)
         for(j=1;j<=NoC;j++)
             mat[i][j]=mat2[i][j];
     Discover_Fill(x,y);
+
+    while(CanChangeClr==false&&Execute==true)
+        Sleep(1);
 
     for(i=1;i<=NoL;i++)
         for(j=1;j<=NoC;j++)
@@ -145,7 +150,8 @@ void Discover(int x,int y){
                 else
                     DrawBlock_Number(j-1,i-1,mat2[i][j]);
             }
-    if(t1.joinable()==true)
+    CanClear=true;
+    //if(t1.joinable()==true)
         t1.join();
 }
 void DiscoverExtended(int l,int c,int val){

@@ -18,7 +18,7 @@ void DisplayVictoryMessage(){
     setcolor(WHITE);
     setbkcolor(LIGHTGREEN);
     setfillstyle(SOLID_FILL,LIGHTGREEN);
-    bar(sy-10,sx-55,sy+335,sx+55);//y  = 326
+    bar(sy-10,sx-55,sy+335,sx+55);
     settextstyle(DEFAULT_FONT,  HORIZ_DIR,7);
     outtextxy(sy+82,sx-45,"AREA");
     outtextxy(sy,sx,"CLEARED!");
@@ -252,7 +252,12 @@ void RevealTemporarely(int x,int y,bool Execute){
                 else
                     if(mat1[j+1][i+1]==3)
                         DrawBlock_Reaveal_CoverBlock(i,j,false);
-        delay(500);
+        CanChangeClr=true;
+
+        delay(650);
+        while(CanClear==false)
+            delay(1);
+
         for(i=x-3;i<=x+3;i++)
             for(j=y-3;j<=y+3;j++)
                 if(mat1[j+1][i+1]==1){
@@ -270,4 +275,13 @@ void RevealTemporarely(int x,int y,bool Execute){
                             if(mat3[j+1][i+1]>0)
                                 DrawBlock_Marked(i,j,mat3[j+1][i+1]-1);
                         }
+}
+void afisare(){
+/*int i,j;
+for(i=1;i<=NoL;i++){
+    for(j=1;j<=NoC;j++)
+        cout<<mat1[i][j]<<" ";
+    cout<<endl;
+}
+cout<<endl;*/
 }

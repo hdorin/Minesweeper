@@ -59,6 +59,7 @@ void LButton(){
 
         }
         if(ismouseclick(WM_LBUTTONUP)){
+                afisare();///STERGE
             getmouseclick(WM_LBUTTONUP, x,y);
             LButtonIsPressed=false;
             if(WaitOneMore==true)
@@ -69,20 +70,17 @@ void LButton(){
                     return ;
                 }
 
-            //MISCAREA CU CLICK DREAPTA + STANGA
-                if(RButtonIsPressed==true){
+                if(RButtonIsPressed==true){//MISCAREA CU CLICK DREAPTA + STANGA
                     if(mat2[y/40+1][x/40+1]>0&&mat2[y/40+1][x/40+1]<9){
                         DiscoverExtended(y/40+1,x/40+1,mat2[y/40+1][x/40+1]);
-
                         Victory=TestSfarsitJoc();
                     }
-                }else//CAND VREAU SA APAS CASUTE
+                }else//CAND VREAU SA APAS CASUTE SIMPLU
                     if(mat3[y/40+1][x/40+1]==0){
                         Discover(y/40+1,x/40+1);
                         Victory=TestSfarsitJoc();
                     }
         }
-
     }
 }
 void InitMouseControl(){
