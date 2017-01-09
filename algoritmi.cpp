@@ -169,7 +169,6 @@ void DiscoverExtended(int l,int c,int val){
                 if(mat1[l+DirL[i]][c+DirC[i]]==1){
                     GameOver=true;
                     return ;
-
                 }
                     if(mat1[l+DirL[i]][c+DirC[i]]==3)
                         EndAfter=true;
